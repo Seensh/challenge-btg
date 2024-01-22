@@ -23,6 +23,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
       - name: Build docker image
         run: docker build -t seensh/deploy_challenge_btg .
       - name: Push image docker
