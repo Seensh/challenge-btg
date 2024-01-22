@@ -1,11 +1,14 @@
 package com.challenge.btg.pedidos.entity;
 
+import com.challenge.btg.pedidos.model.item.DadosFilaItem;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
 
 @Entity(name = "item")
 @Table(name = "item")
@@ -31,7 +34,13 @@ public class Item {
     private Integer quantidade;
 
 
-    private Double preco;
+    private BigDecimal preco;
 
-    // getters e setters
+
+    public Item(DadosFilaItem dadosFilaItem, Pedido pedido) {
+        this.pedido = pedido;
+        this.produto = dadosFilaItem.produto();
+        this.quantidade = dadosFilaItem.quantidade();
+        this.preco = dadosFilaItem.preco();
+    }
 }

@@ -6,14 +6,11 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
-@RequestMapping("/api/pedido")
+@RequestMapping("/api/pedidos")
 public class PedidoController {
 
     @Autowired
@@ -24,7 +21,12 @@ public class PedidoController {
     public ResponseEntity inserir(@RequestBody @Valid DadosInserirPedido dados, UriComponentsBuilder uriComponentsBuilder){
         var dadosDetalhamentoPedido = service.inserirPedido(dados);
 
-        var uri = uriComponentsBuilder.path("/api/pedido/{id}").buildAndExpand(dadosDetalhamentoPedido.idPedido()).toUri();
+        var uri = uriComponentsBuilder.path("/api/pedido/{id}").buildAndExpand(dadosDetalhamentoPedido.codigoPedido()).toUri();
         return ResponseEntity.created(uri).body(dadosDetalhamentoPedido);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity buscaPorId(@PathVariable Long id){
+        return ResponseEntity.ok(service.buscarPedidoPorId(id));
     }
 }

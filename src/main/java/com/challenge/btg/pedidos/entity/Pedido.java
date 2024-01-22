@@ -1,5 +1,6 @@
 package com.challenge.btg.pedidos.entity;
 
+import com.challenge.btg.pedidos.model.item.DadosFilaItem;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -42,6 +43,18 @@ public class Pedido {
     public Pedido(Cliente cliente) {
         this.cliente = cliente;
         this.dataInclusao = new Date();
+        this.dataAlteracao = new Date();
+        this.valorTotal = BigDecimal.ZERO;
+    }
+
+    public void addClienteAndItens(Cliente cliente, List<DadosFilaItem> itens, BigDecimal valorTotalPedido) {
+        this.cliente = cliente;
+
+        this.itens = itens.stream().map(dadosFilaItem -> {
+            return new Item(dadosFilaItem, this);
+        }).toList();
+
+        this.valorTotal = this.valorTotal != null && this.valorTotal.compareTo(BigDecimal.ZERO) > 0 ? this.valorTotal.add(valorTotalPedido) : valorTotalPedido;
         this.dataAlteracao = new Date();
     }
 }
