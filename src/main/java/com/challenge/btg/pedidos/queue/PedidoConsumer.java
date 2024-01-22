@@ -1,4 +1,4 @@
-package com.challenge.btg.pedidos.service;
+package com.challenge.btg.pedidos.queue;
 
 import com.challenge.btg.pedidos.model.pedido.DadosFilaPedido;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
