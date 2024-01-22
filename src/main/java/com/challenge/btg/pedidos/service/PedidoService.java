@@ -4,6 +4,7 @@ import com.challenge.btg.pedidos.entity.Item;
 import com.challenge.btg.pedidos.entity.Pedido;
 import com.challenge.btg.pedidos.model.item.DadosFilaItem;
 import com.challenge.btg.pedidos.model.pedido.DadosDetalhamentoPedido;
+import com.challenge.btg.pedidos.model.pedido.DadosDetalhamentoValorTotalPedido;
 import com.challenge.btg.pedidos.model.pedido.DadosFilaPedido;
 import com.challenge.btg.pedidos.model.pedido.DadosInserirPedido;
 import com.challenge.btg.pedidos.repository.ClienteRepository;
@@ -71,4 +72,10 @@ public class PedidoService {
         return valorTotalPedido;
     }
 
+    public DadosDetalhamentoValorTotalPedido buscarValorTotalPedido(Long id) {
+        var pedido = pedidoRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Pedido não encontrado"));
+
+        return new DadosDetalhamentoValorTotalPedido(pedido);
+    }
 }

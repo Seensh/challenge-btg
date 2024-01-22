@@ -29,4 +29,9 @@ public class PedidoController {
     public ResponseEntity buscaPorId(@PathVariable Long id){
         return ResponseEntity.ok(service.buscarPedidoPorId(id));
     }
+
+    @GetMapping("/valorTotal/{id}")
+    public ResponseEntity buscaValorTotalPedido(@PathVariable Long id) {
+        return ResponseEntity.ok(service.buscarValorTotalPedido(id));
+    }
 }
