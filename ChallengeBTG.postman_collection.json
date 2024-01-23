@@ -1,0 +1,91 @@
+{
+	"info": {
+		"_postman_id": "dca9e88a-e1f5-4205-a404-5ee2c3deeb29",
+		"name": "ChanllengeBTG",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "3563472"
+	},
+	"item": [
+		{
+			"name": "Hello",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/hello"
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastrar Cliente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Felipe Barbosa dos Santos\",\r\n    \"email\": \"felipe.barbosa@gmail.com\",\r\n    \"telefone\": \"11983211234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/clientes"
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastrar Pedido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"codigoCliente\":\"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/pedidos"
+			},
+			"response": []
+		},
+		{
+			"name": "Busca Pedido por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/pedidos/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Lista Pedidos por ID Cliente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/clientes/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Quantidade de Pedidos por Cliente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/clientes/1/quantidade/pedidos"
+			},
+			"response": []
+		},
+		{
+			"name": "Valor total do pedido",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/pedidos/valorTotal/1"
+			},
+			"response": []
+		}
+	]
+}
